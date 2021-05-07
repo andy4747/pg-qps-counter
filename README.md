@@ -1,6 +1,6 @@
 # pg-qps-counter
 
-This piece of program gets the total query per seconds for a database.
+This piece of program gets the total query per seconds for a database using golang.
 
 ## Usage
 ```
