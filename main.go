@@ -1,8 +1,10 @@
 package main
 
 import (
+	"database/sql"
 	"flag"
 	"fmt"
+	"log"
 )
 
 func main() {
@@ -12,8 +14,13 @@ func main() {
 
 	flag.Parse()
 
-	fmt.Println(*dbName)
-	fmt.Println(*dbUser)
-	fmt.Println(*dbPass)
+	// creating a string that holds the connection info for connecting to a database.
+	conStr := fmt.Sprintf("user=%s dbname=%s password=%s sslmode=disable", *dbUser, *dbName, *dbPass)
 
+	// opening a connection to the database and returning it.
+	db, err := sql.Open("postgres", conStr)
+	if err != nil {
+		log.Fatalln(err.Error())
+	}
+	_ = db
 }
